@@ -2,25 +2,23 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+
+<!-- WAJIB biar pas di HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Firyal 🎂</title>
 
 <style>
 body {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: black;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-/* CONTAINER RASIO HP (9:16) */
+/* FULL LAYAR HP */
 .container {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 9 / 16;
+    width: 100vw;
+    height: 100vh;
     position: relative;
 }
 
@@ -29,8 +27,8 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .grid div {
@@ -95,22 +93,33 @@ button {
         <div style="background-image:url('firyal.jpg')"></div>
     </div>
 
+    <!-- BUTTON -->
     <button onclick="showSurprise()">Klik Surprise 🎁</button>
 
+    <!-- POPUP -->
     <div class="popup" id="popup">
         <img src="foto.jpg" class="photo">
         <h2>🎉 Selamat Ulang Tahun 🎉</h2>
         <h3>Firyal Amalia 💖</h3>
+        <p>Semoga semua hal baik selalu datang ke kamu ✨</p>
     </div>
 
 </div>
 
-<audio id="audio" src="happy-birthday.mp3"></audio>
+<!-- AUDIO -->
+<audio id="audio">
+    <source src="https://www.soundjay.com/human/sounds/happy-birthday-song-01.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 function showSurprise() {
     document.getElementById("popup").classList.add("active");
-    document.getElementById("audio").play();
+
+    let audio = document.getElementById("audio");
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+        alert("Klik sekali lagi ya biar musiknya nyala 🎵");
+    });
 }
 </script>
 
