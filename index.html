@@ -2,60 +2,71 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Firyal 🎂</title>
 
 <style>
 body {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black;
     overflow: hidden;
-    font-family: Arial, sans-serif;
 }
 
-/* GRID BACKGROUND 8x8 */
+/* CONTAINER RASIO HP (9:16) */
+.container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+    position: relative;
+}
+
+/* GRID 2x2 */
 .grid {
-    position: fixed;
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    z-index: 0;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .grid div {
-    border: 1px solid rgba(255,255,255,0.2);
     background-size: cover;
     background-position: center;
 }
 
 /* BUTTON */
 button {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    padding: 20px 40px;
-    font-size: 20px;
+    padding: 15px 25px;
+    font-size: 16px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     background: #ff4d6d;
     color: white;
     cursor: pointer;
-    top: 40%;
+    bottom: 20px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 }
 
 /* POPUP */
 .popup {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     background: rgba(255,255,255,0.95);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 15px;
     text-align: center;
-    transition: 0.5s;
+    transition: 0.4s;
     z-index: 3;
+    width: 80%;
 }
 
 .popup.active {
@@ -64,52 +75,34 @@ button {
 
 /* FOTO */
 .photo {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- GRID -->
-<div class="grid">
-    <!-- TOTAL 64 SLOT -->
-    <!-- Ganti gambar sesuai file kamu -->
-    
-    <!-- Baris 1 -->
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
+<div class="container">
 
-    <!-- Baris 2 -->
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
-    <div style="background-image:url('foto.jpg')"></div>
+    <!-- GRID 2x2 -->
+    <div class="grid">
+        <div style="background-image:url('foto.jpg')"></div>
+        <div style="background-image:url('foto.jpg')"></div>
+        <div style="background-image:url('foto.jpg')"></div>
+        <div style="background-image:url('foto.jpg')"></div>
+    </div>
 
-    <!-- LANJUT SAMPAI 64 -->
-    <!-- Kamu bisa copy baris di atas sampai total 64 -->
-</div>
+    <button onclick="showSurprise()">Klik Surprise 🎁</button>
 
-<button onclick="showSurprise()">Klik Surprise 🎁</button>
+    <div class="popup" id="popup">
+        <img src="foto.jpg" class="photo">
+        <h2>🎉 Selamat Ulang Tahun 🎉</h2>
+        <h3>Firyal Amalia 💖</h3>
+    </div>
 
-<div class="popup" id="popup">
-    <img src="foto.jpg" class="photo">
-    <h2>🎉 Selamat Ulang Tahun 🎉</h2>
-    <h3>Firyal Amalia 💖</h3>
 </div>
 
 <audio id="audio" src="happy-birthday.mp3"></audio>
